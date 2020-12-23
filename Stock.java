@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Stock
 {
+    /*
     @Override
     public String toString() {
         return "Stock{" +
@@ -21,14 +22,17 @@ public class Stock
         return Double.compare(stock.price, price) == 0 && Objects.equals(sName, stock.sName) && Objects.equals(productType, stock.productType);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(sName, productType, price);
-    }
-
+    */
     private String sName;
-    private String productType;
     private double price;
+    public Stock()
+    {
+
+    }
+    public Stock(String sName, double price) {
+        this.sName = sName;
+        this.price = price;
+    }
 
     public String getsName() {
         return sName;
@@ -36,14 +40,6 @@ public class Stock
 
     public void setsName(String sName) {
         this.sName = sName;
-    }
-
-    public String getProductType() {
-        return productType;
-    }
-
-    public void setProductType(String productType) {
-        this.productType = productType;
     }
 
     public double getPrice() {
