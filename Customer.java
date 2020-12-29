@@ -1,9 +1,11 @@
 package StocksInvestorPortfolio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Customer
+public class Customer implements Serializable
 {
+    private static final long serialVersionUID = 1L;
     //private static String customerName = "Neetu";
     private String customerName;
     private ArrayList<PurchaseStock> purchaseStock;
@@ -32,5 +34,15 @@ public class Customer
     public void setPurchaseStock(ArrayList<PurchaseStock> purchaseStock) {
         this.purchaseStock = purchaseStock;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Customer{" +
+                "customerName='" + customerName + '\'' +
+                ", purchaseStock=" + purchaseStock +
+                '}';
+    }
+
 
 }

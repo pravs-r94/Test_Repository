@@ -1,19 +1,31 @@
 package StocksInvestorPortfolio;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class PurchaseStock
+public class PurchaseStock implements Serializable
 {
     private String sFullName;
     private int qty;
     private  double sAvgPrice;
-    private SimpleDateFormat purchaseDate;
+    private Date purchaseDate;
+
+    @Override
+    public String toString() {
+        return "PurchaseStock{" +
+                "sFullName='" + sFullName + '\'' +
+                ", qty=" + qty +
+                ", sAvgPrice=" + sAvgPrice +
+                ", purchaseDate=" + purchaseDate +
+                '}';
+    }
 
     public PurchaseStock()
     {
     }
 
-    public PurchaseStock(String sFullName, int qty, double sAvgPrice, SimpleDateFormat purchaseDate) {
+    public PurchaseStock(String sFullName, int qty, double sAvgPrice, Date purchaseDate) {
         this.sFullName = sFullName;
         this.qty = qty;
         this.sAvgPrice = sAvgPrice;
@@ -44,12 +56,11 @@ public class PurchaseStock
         this.sFullName = sFullName;
     }
 
-    public SimpleDateFormat getPurchaseDate() {
+    public Date getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(SimpleDateFormat purchaseDate)
-    {
+    public void setPurchaseDate(Date purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 }
