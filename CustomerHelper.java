@@ -9,11 +9,11 @@ import java.util.Scanner;
 public class CustomerHelper
 {
     Customer portfolio;
-   static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+    ArrayList<Customer> customers = new ArrayList<>();
 
-    public static ArrayList<Customer> mockData() throws ParseException
+    static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+   public  ArrayList<Customer> mockData() throws ParseException
     {
-        ArrayList<Customer> customers = new ArrayList<>();
         ArrayList<PurchaseStock> neethuStocks = new ArrayList<>();
         ArrayList<PurchaseStock> gouthuStocks = new ArrayList<>();
         neethuStocks.add(0, new PurchaseStock("Apple", 5, 12.53, sdf.parse("12/25/2020")));
@@ -25,6 +25,7 @@ public class CustomerHelper
         customers.add(neethuPortfolio);
         customers.add(gouthuPortfolio);
         return customers;
+
     }
     public static Customer buyStocks(ArrayList<Stock> stocks, String cName, Date date, Customer customer)
     {
@@ -77,16 +78,17 @@ public class CustomerHelper
         }
         return customer;
     }
-    public static void viewPortfolio(Customer customer)
-    {
-        for(PurchaseStock purchaseStock : customer.getPurchaseStock())
+        public static void viewPortfolio (Customer customer)
         {
-                System.out.println(customer.getCustomerName() + " Portfolio:\n" + "Stock Name: " + purchaseStock.getsFullName() +
-                        "\nStock Qty: " + purchaseStock.getQty());
+
+                for (PurchaseStock purchaseStock : customer.getPurchaseStock()) {
+                    System.out.println(customer.getCustomerName() + " Portfolio:\n" + "Stock Name: " + purchaseStock.getsFullName() +
+                            "\nStock Qty: " + purchaseStock.getQty());
+
+                }
 
         }
 
-    }
     public void searchPortfolio(Customer mockCustomer) throws ParseException
     {
         for(int i=0; i<mockCustomer.getPurchaseStock().size(); i++)
@@ -105,4 +107,34 @@ public class CustomerHelper
     }
 
 
+
+        public Stock viewAvailableStocks(ArrayList<Stock> stocks1)
+    {
+        System.out.println("Available stocks:");
+        //for(int i=0;i<stocks1.size();i++)
+            for (Stock s1:stocks1)
+            {
+                System.out.print("\t" + s1.getsFullName() );
+            }
+
+        System.out.println("\n Please choose the stock name you want to view");
+
+        Scanner cEntry = new Scanner(System.in);  // Create a Scanner object
+        String stockName = cEntry.nextLine();
+
+        for(Stock s2: stocks1)
+        {
+            if(s2.getsFullName().equals(stockName))
+            {
+                System.out.println("Stock Name: " + s2.getsFullName() + "\nAverage Price: " + s2.getsAvgPrice() + "\nUnique Code: " + s2.getsUniqueCode() + "\nCategory: " + s2.getsCategory() + "\n");
+                return s2;
+            }
+        }
+
+        return null;
+    }
+
+
 }
+
+
